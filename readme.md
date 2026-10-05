@@ -36,16 +36,17 @@ With the squared features, the two rings sit in clearly different regions of spa
 
 ## 📊 Results
 
-Accuracy on a 25% test split (`random_state=0`), trained on the features `X1, X2, X1², X2², X1*X2`:
+Accuracy on a 25% test split (`random_state=0`):
 
-| Kernel  | Accuracy |
-|---------|----------|
-| Linear  | 1.00     |
-| Poly    | 1.00     |
-| RBF     | 1.00     |
-| Sigmoid | 0.80     |
+| Features used | Kernel | Accuracy |
+|---------------|--------|----------|
+| Raw `X1, X2` | Linear | 0.44 |
+| `X1, X2, X1², X2², X1*X2` | Linear | 1.00 |
+| `X1, X2, X1², X2², X1*X2` | Poly | 1.00 |
+| `X1, X2, X1², X2², X1*X2` | RBF | 1.00 |
+| `X1, X2, X1², X2², X1*X2` | Sigmoid | 1.00 |
 
-Note: the linear kernel scores perfectly here only because the squared features were added by hand. That is the kernel trick done manually. On the raw 2D data (`X1, X2` only), a linear kernel can't separate the circles.
+A linear kernel on the raw 2D data does no better than guessing (0.44). After adding the polynomial features by hand (the kernel trick done manually), even a plain linear kernel reaches 1.00, and so do all the other kernels.
 
 ## 📂 What's inside
 
